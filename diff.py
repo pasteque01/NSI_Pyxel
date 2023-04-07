@@ -13,8 +13,6 @@ class FlappyBird:
         self.vitesse = 2
         self.e = randint(-60, 20)
         self.o = self.e +100
-        #self.b = randint(20, 90) # pos Y du tuyau du haut
-        #self.c = self.b+60 # Position y du tuyau du bas basée sur la pos Y du tuyau du haut
         pyxel.load("my_resource.pyxres")
         pyxel.run(self.update, self.draw)
 
@@ -40,8 +38,6 @@ class FlappyBird:
         if self.pipetop == 0: # Lorsqu'un tuyau passe à x=0:
             self.e = randint(-60, 20)
             self.o = self.e +100
-            #self.b = randint(20, 90)
-            #self.c = self.b+40
             self.score += 1
             self.scorespeed += 1
             print(self.scorespeed)
@@ -75,12 +71,5 @@ class FlappyBird:
 
 
 FlappyBird()
-
-
-
-
-
-
-
 
 
