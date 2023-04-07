@@ -1,5 +1,9 @@
 # PROJET: JEU PYXEL
-<b>22/03:</b>
+<b>07/04:</b>
+<br>• Modification total du code
+<br>• Début de la fonction de mort
+<br>
+<br><b>22/03:</b>
 <br>• Amélioration du système d'accélération
 <br>• Integration d'images personalisées dans le jeu (oiseau, tuyaux)
 <br>
