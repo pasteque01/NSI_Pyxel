@@ -2,9 +2,9 @@ import pyxel
 from random import randint
 
 class FlappyBird:
-
     def __init__(self):
-        pyxel.init(160, 120)
+        pyxel.init(160, 120, "meow")
+
         self.pipetop = 0
         self.pipebot = 40
         self.death = False
@@ -16,14 +16,11 @@ class FlappyBird:
         pyxel.load("my_resource.pyxres")
         pyxel.run(self.update, self.draw)
 
-
     def update(self):
-
-        if not self.death :
+        if self.death == False:
             self.update_player()
             self.update_pipes()
             self.update_score()
-            self.death_event()
             self.check_death()
 
     def update_player(self):
@@ -46,19 +43,19 @@ class FlappyBird:
             self.vitesse += 0.5
 
     def check_death(self):
-        if self.pipebot >= 108 :
+        if self.pipebot >= 108 or self.pipebot <= 0:
             self.death_event()
+        if self.pipebot >= 0 and self.pipebot <= self.e+71 and self.pipetop <= 32 and self.pipetop >= 20:
+            self.death_event()
+
 
 
     def death_event(self):
         self.death = True
-        pyxel.stop()
-        pyxel.play(0, 1)
 
 
     def draw(self):
-
-        if not self.death :
+        if self.death == False:
             pyxel.cls(5)
             pyxel.blt(self.pipetop, self.e, 2, 0, 0, 32, 71)
             pyxel.blt(self.pipetop, self.o, 1, 0, 0, 32, 71)
@@ -71,5 +68,3 @@ class FlappyBird:
 
 
 FlappyBird()
-
-
