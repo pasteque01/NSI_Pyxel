@@ -57,7 +57,7 @@ class FlappyBird:
     def draw(self):
         if self.death == False:
             pyxel.cls(5)
-            pyxel.blt(self.pipetop, self.e, 2, 0, 0, 32, 71)
+            pyxel.blt(self.pipetop, self.e, 2, 0, 0, 32, 72)
             pyxel.blt(self.pipetop, self.o, 1, 0, 0, 32, 71)
             pyxel.blt(20, self.pipebot, 0, 0, 0, 18, 12) # Joueur
             pyxel.text(5, 5, "Score:", 2)
@@ -65,6 +65,9 @@ class FlappyBird:
 
         else :
             pyxel.cls(0)
+            pyxel.text(60,45, "Game Over",8)
+            pyxel.text(30,60, "Press Enter To Play Again",8)
+
 
 
 FlappyBird()
