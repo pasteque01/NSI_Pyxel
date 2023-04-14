@@ -1,5 +1,7 @@
 # PROJET: JEU PYXEL
-<b>07/04:</b>
+<br><b>14/04:</b>
+<br>• Continuité de la fonction mort (meurt lorsqu'on est hors écran + meurt lorsqu'on touche un tuyau)
+<br><b>07/04:</b>
 <br>• Modification total du code
 <br>• Début de la fonction de mort
 <br>
