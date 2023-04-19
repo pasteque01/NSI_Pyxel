@@ -65,8 +65,6 @@ class FlappyBird:
 
     def death_event(self):
         self.death = True
-        pyxel.stop()
-        pyxel.play(0, 1)
 
 
     def draw(self):
@@ -98,14 +96,3 @@ class FlappyBird:
 
 
 FlappyBird()
-
-
-
-
-
-
-
-
-
-
-
