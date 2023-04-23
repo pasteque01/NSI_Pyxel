@@ -1,6 +1,11 @@
 # PROJET: JEU PYXEL
+<br><b>23/04:</b>
+<br>• Addition d'un menu principal
+<br>• Changement du fonctionnement du code (répartition des fonctions parmis différents scripts)
+<br>
 <br><b>14/04:</b>
 <br>• Continuité de la fonction mort (meurt lorsqu'on est hors écran + meurt lorsqu'on touche un tuyau)
+<br>
 <br><b>07/04:</b>
 <br>• Modification total du code
 <br>• Début de la fonction de mort
