@@ -1,5 +1,5 @@
 # PROJET: JEU PYXEL
-<br><b><u>Difficultés:</u></b>
+<br><b><ul>Difficultés:</ul></b>
 <br>• Pas de mort pour le tuyau du bas
 <br>• Score qui se met mal a jour a partir de 10
 <br>• Tuyau n'est pas collé à la bordure
