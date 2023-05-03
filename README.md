@@ -1,4 +1,10 @@
 # PROJET: JEU PYXEL
+<br><b><u>Difficultés:</u></b>
+<br>• Pas de mort pour le tuyau du bas
+<br>• Score qui se met mal a jour a partir de 10
+<br>• Tuyau n'est pas collé à la bordure
+<br>• Tuyau n'arrive pas à la fin de la fenêtre
+<br>
 <br><b>23/04:</b>
 <br>• Addition d'un menu principal
 <br>• Changement du fonctionnement du code (répartition des fonctions parmis différents scripts)
