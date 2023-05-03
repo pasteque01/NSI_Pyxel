@@ -24,7 +24,7 @@ class Game:
         self.score = 0 # Score constant durant la partie / a redéfinir lorsqu'on recommence la partie
         self.scorespeed = 0 # Score allant jusqu'à 5 pour l'accélérateur
         self.vitesse = 2 # vitesse des tuyaux au debut
-        self.e = randint(-60, 20) #tuyaux aleatoire
+        self.e = randint(-60, -10) #tuyaux aleatoire
         self.o = self.e +100 #tuyaux aleatoire"""
         self.pipetop = 0 #position du tuyaux du haut
         self.pipebot = 40 #position du tuyaux du bas
@@ -53,7 +53,7 @@ class Game:
 
     def update_score(self):
         if self.pipetop == 0: # Lorsqu'un tuyau passe à x=0:
-            self.e = randint(-60, 20)
+            self.e = randint(-60, -10)
             self.o = self.e +100
             self.score += 1
             self.scorespeed += 1
@@ -64,7 +64,7 @@ class Game:
 
     def check_death(self):
         if self.pipebot >= 108 or self.pipebot <= 0: # si l'oiseau sort du cadre = partie finie
-            self.death_event()
+            self.game_over()
         if self.pipebot >= 0 and self.pipebot <= self.e+71 and self.pipetop <= 32 and self.pipetop >= 20: # si il touche un tuyaux =partie finie
             self.game_over()
 
@@ -84,8 +84,8 @@ class Game:
 
     def draw_pipes(self):
         pyxel.cls(5)
-        pyxel.blt(self.pipetop, self.e, 2, 0, 0, 32, 72)
-        pyxel.blt(self.pipetop, self.o, 1, 0, 0, 32, 71)
+        pyxel.blt(self.pipetop, self.e, 2, 0, 0, 32, 72) #tuyau haut
+        pyxel.blt(self.pipetop, self.o, 1, 0, 0, 32, 71) #tuyau bas
 
     def draw_player(self) :
         pyxel.blt(20, self.pipebot, 0, 0, 0, 18, 12) # Joueur
