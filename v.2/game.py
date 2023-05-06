@@ -54,7 +54,7 @@ class Game:
     def update_score(self):
         if self.pipetop == 0: # Lorsqu'un tuyau passe à x=0:
             self.e = randint(-60, -10)
-            self.o = self.e +100
+            self.o = self.e +110
             self.score += 1
             self.scorespeed += 1
             print(self.scorespeed)
