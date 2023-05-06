@@ -2,8 +2,8 @@
 <br><b><i>Difficultés:</i></b>
 <br>• Pas de mort pour le tuyau du bas
 <br>• Score qui se met mal a jour a partir de 10
-<br>• Tuyau n'est pas collé à la bordure
-<br>• <s>Tuyau n'arrive pas à la fin de la fenêtre</s> (réparé le 06/05)
+<br>• <s>Tuyau n'est pas collé à la bordure</s> (réparé le 06/05)
+<br>• Tuyau n'arrive pas à la fin de la fenêtre
 <br>
 <br><b>23/04:</b>
 <br>• Addition d'un menu principal
