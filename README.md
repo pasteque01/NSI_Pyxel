@@ -1,25 +1,41 @@
 # PROJET: JEU PYXEL
-<br><b><i>Difficultés:</i></b>
-<br>• Pas de mort pour le tuyau du bas
-<br>• Score qui se met mal a jour a partir de 10
-<br>• <s>Tuyau n'est pas collé à la bordure</s> (réparé le 06/05)
-<br>• Tuyau n'arrive pas à la fin de la fenêtre
-<br>
-<br><b>23/04:</b>
-<br>• Addition d'un menu principal
-<br>• Changement du fonctionnement du code (répartition des fonctions parmis différents scripts)
-<br>
-<br><b>14/04:</b>
-<br>• Continuité de la fonction mort (meurt lorsqu'on est hors écran + meurt lorsqu'on touche un tuyau)
-<br>
-<br><b>07/04:</b>
-<br>• Modification total du code
-<br>• Début de la fonction de mort
-<br>
-<br><b>22/03:</b>
-<br>• Amélioration du système d'accélération
-<br>• Integration d'images personalisées dans le jeu (oiseau, tuyaux)
-<br>
-<br><b>15/03:</b>
-<br>• Démarrage du projet
-<br>• Création d'un joueur qui peut sauter + fond qui avance
+<b><i>Etat actuel du projet:</i></b>
+<ul><li>Joueur (oiseau) qui saute a travers des tuyaux avec la barre ESPACE</li>
+<li>La taille des tuyaux varient a chaque rotation</li>
+<li>Un score s'affiche durant la partie qui se met a jour a chaque franchissement de tuyau</li>
+<li>Un menu s'affiche lors du démarrage pour afficher le dernier score et le meilleur score</li>
+<li>L'oiseau meurt lorsqu'il touche un tuyau ou touche la bordure de l'écran</li>
+<li>Après une mort, le joueur retourne au menu de démarrage où le dernier score et le meilleur score se mettent à jour</li></ul>
+<b><i>Difficultés:</i></b>
+<ul>
+<li><s>Pas de mort pour le tuyau du bas</s> (réparé le 07/05)</li>
+<li>Score qui se met mal a jour a partir de 10</li>
+<li><s>Tuyau n'est pas collé à la bordure</s> (réparé le 06/05)</li>
+<li>Tuyau n'arrive pas à la fin de la fenêtre</li>
+</ul>
+# Actualités du projet:
+<b>07/05:</b>
+<ul><li>Modification du système de collision pour les tuyaux (+ explication dans le code)</li>
+<li>Modification du nom de certaines variables qui n'étaient pas claires</li>
+<li>Ajout d'un système de HIGH SCORE</li>
+</ul>
+<b>23/04:</b>
+<ul>
+<li>Addition d'un menu principal</li>
+<li>Changement du fonctionnement du code (répartition des fonctions parmis différents scripts)</li>
+</ul>
+<b>14/04:</b>
+<ul><li>Continuité de la fonction mort (meurt lorsqu'on est hors écran + meurt lorsqu'on touche un tuyau)</li>
+</ul>
+<b>07/04:</b>
+<ul><li>Modification total du code</li>
+<li>Début de la fonction de mort</li>
+</ul>
+<b>22/03:</b>
+<ul><li>Amélioration du système d'accélération</li>
+<li>Integration d'images personalisées dans le jeu (oiseau, tuyaux)</li>
+</ul>
+<b>15/03:</b>
+<ul><li>Démarrage du projet</li>
+<li>Création d'un joueur qui peut sauter + fond qui avance</li>
+</ul>
