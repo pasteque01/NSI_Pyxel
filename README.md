@@ -13,7 +13,8 @@
 <li><s>Tuyau n'est pas collé à la bordure</s> (réparé le 06/05)</li>
 <li>Tuyau n'arrive pas à la fin de la fenêtre</li>
 </ul>
-# Actualités du projet:
+
+# ACTUALITES DU PROJET:
 <b>07/05:</b>
 <ul><li>Modification du système de collision pour les tuyaux (+ explication dans le code)</li>
 <li>Modification du nom de certaines variables qui n'étaient pas claires</li>
