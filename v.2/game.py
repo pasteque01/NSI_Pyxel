@@ -11,7 +11,7 @@ class Game:
     STATE_MAP = 1
 
     def __init__(self):
-        # Dès l'eself.pipes[x]ecution du jeu, l'etat du jeu est dans le menu
+        # Dès l'execution du jeu, l'etat du jeu est dans le menu
         self.state = self.STATE_MAIN_MENU
         self.main_menu = MainMenu(self) #fait reference a la class MainMenu dans menu.py
         self.score = 0 #score par defaut
@@ -24,10 +24,10 @@ class Game:
         self.death = False #joueur pas mort
         self.score = 0 # Score constant durant la partie / a redéfinir lorsqu'on recommence la partie
         self.scorespeed = 0 # Score allant jusqu'à 5 pour l'accélérateur
-        self.vitesse = 2 # vitesse des tuyauself.pipes[x] au debut
-        self.e = randint(-60, -10) #tuyauself.pipes[x] aleatoire
-        self.o = self.e +110 #tuyauself.pipes[x] aleatoire"""
-        self.pipetop = 100 #position du tuyauself.pipes[x] du haut
+        self.vitesse = 2 # vitesse des tuyaux au debut
+        self.e = randint(-60, -10) #tuyau aleatoire
+        self.o = self.e +110 #tuyau aleatoire
+        self.pipetop = 100 #position du tuyau du haut
         self.player = 40
         self.pipes = {"Pipe1": [self.e, self.e+71, self.pipetop, self.pipetop+32], "Pipe2": [self.e, self.e+71, self.pipetop, self.pipetop+32]}
 
@@ -47,7 +47,7 @@ class Game:
 
     def update_player(self):
         if pyxel.btnp(pyxel.KEY_SPACE): # Saut
-            self.player = (self.player - 10) # lorsque l'oiseau tombe et qu'on appuie sur espace il va remonter de 10 piself.pipes[x]els
+            self.player = (self.player - 10) # lorsque l'oiseau tombe et qu'on appuie sur espace il va remonter de 10 pixels
 
     def update_pipes(self):
         self.pipetop = (self.pipetop - self.vitesse) % pyxel.width
@@ -55,13 +55,13 @@ class Game:
         self.pipes = {"Pipe1": [self.e, self.e+71, self.pipetop], "Pipe2": [self.o, self.o+71, self.pipetop]} # Les valeurs "pipetop" restent les mêmes dans les 2 tuyaux pour l'instant; nous pouvons les changer pour faire varier la posX d'un tuyau sans affecter la collision
 
     def update_score(self):
-        if self.pipetop == 0: # Lorsqu'un tuyau passe à self.pipes[x]=0:
+        if self.pipetop == 0: # Lorsqu'un tuyau passe à x=0:
             self.e = randint(-60, -15)
             self.o = self.e +110
             self.score += 1
             self.scorespeed += 1
             print(self.pipes)
-        if self.scorespeed == 5: # Tous les 5 tuyauself.pipes[x]:
+        if self.scorespeed == 5: # Tous les 5 tuyaux:
             self.scorespeed = 0
             self.vitesse += 0.5
 
