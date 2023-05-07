@@ -11,23 +11,25 @@ class Game:
     STATE_MAP = 1
 
     def __init__(self):
-        # Dès l'execution du jeu, l'etat du jeu est dans le menu
+        # Dès l'eself.pipes[x]ecution du jeu, l'etat du jeu est dans le menu
         self.state = self.STATE_MAIN_MENU
         self.main_menu = MainMenu(self) #fait reference a la class MainMenu dans menu.py
         self.score = 0 #score par defaut
+        self.highscore = 0
+        self.pipes = {}
 
     def new_game(self):
         self.main_menu = None
         self.state = self.STATE_MAP #lors d'une nouvelle partie, l'etat du jeu est la map
-
         self.death = False #joueur pas mort
         self.score = 0 # Score constant durant la partie / a redéfinir lorsqu'on recommence la partie
         self.scorespeed = 0 # Score allant jusqu'à 5 pour l'accélérateur
-        self.vitesse = 2 # vitesse des tuyaux au debut
-        self.e = randint(-60, -10) #tuyaux aleatoire
-        self.o = self.e +100 #tuyaux aleatoire"""
-        self.pipetop = 0 #position du tuyaux du haut
-        self.pipebot = 40 #position du tuyaux du bas
+        self.vitesse = 2 # vitesse des tuyauself.pipes[x] au debut
+        self.e = randint(-60, -10) #tuyauself.pipes[x] aleatoire
+        self.o = self.e +110 #tuyauself.pipes[x] aleatoire"""
+        self.pipetop = 100 #position du tuyauself.pipes[x] du haut
+        self.player = 40
+        self.pipes = {"Pipe1": [self.e, self.e+71, self.pipetop, self.pipetop+32], "Pipe2": [self.e, self.e+71, self.pipetop, self.pipetop+32]}
 
     def game_over(self): # retourne au menu
         self.state = self.STATE_MAIN_MENU
@@ -45,33 +47,49 @@ class Game:
 
     def update_player(self):
         if pyxel.btnp(pyxel.KEY_SPACE): # Saut
-            self.pipebot = (self.pipebot - 10) # lorsque l'oiseau tombe et qu'on appuie sur espace il va remonter de 10 pixels
+            self.player = (self.player - 10) # lorsque l'oiseau tombe et qu'on appuie sur espace il va remonter de 10 piself.pipes[x]els
 
     def update_pipes(self):
         self.pipetop = (self.pipetop - self.vitesse) % pyxel.width
-        self.pipebot = (self.pipebot + 1.5 ) % pyxel.height
+        self.player = (self.player + 1.5 ) % pyxel.height
+        self.pipes = {"Pipe1": [self.e, self.e+71, self.pipetop], "Pipe2": [self.o, self.o+71, self.pipetop]} # Les valeurs "pipetop" restent les mêmes dans les 2 tuyaux pour l'instant; nous pouvons les changer pour faire varier la posX d'un tuyau sans affecter la collision
 
     def update_score(self):
-        if self.pipetop == 0: # Lorsqu'un tuyau passe à x=0:
-            self.e = randint(-60, -10)
+        if self.pipetop == 0: # Lorsqu'un tuyau passe à self.pipes[x]=0:
+            self.e = randint(-60, -15)
             self.o = self.e +110
             self.score += 1
             self.scorespeed += 1
-            print(self.scorespeed)
-        if self.scorespeed == 5: # Tous les 5 tuyaux:
+            print(self.pipes)
+        if self.scorespeed == 5: # Tous les 5 tuyauself.pipes[x]:
             self.scorespeed = 0
             self.vitesse += 0.5
 
     def check_death(self):
-        if self.pipebot >= 108 or self.pipebot <= 0: # si l'oiseau sort du cadre = partie finie
-            self.game_over()
-        if self.pipebot >= 0 and self.pipebot <= self.e+71 and self.pipetop <= 32 and self.pipetop >= 20: # si il touche un tuyaux =partie finie
+        if self.player >= 108 or self.player <= 0: # si l'oiseau sort du cadre = partie finie
             self.game_over()
 
+        # Ancien code pour les collisions
+        """if self.player >= self.e and self.player <= self.e+71 and self.pipetop <= 42 and self.pipetop >= 20:
+            self.game_over()
+        elif self.player >= self.o and self.pipetop <= 42 and self.pipetop >= 20:
+            self.game_over()"""
 
 
+        for x in self.pipes:
+            if self.player >= self.pipes[x][0] and self.player <= self.pipes[x][1] and self.pipes[x][2] <= 48 and self.pipes[x][2] >= 30:
+                self.game_over()
 
+        """ EXPLICATION:
+        self.player = position Y de l'oiseau
+        self.pipes = dictionnaire qui contient les coordonnées nécessaires pour les collisions
+        > {"Tuyau": [posY du tuyau (en haut, à gauche), posY du tuyau (en bas, à gauche), posX du tuyau]}
+        48 = position X de l'avant de l'oiseau
+        30 = position X de l'arrière de l'oiseau
 
+        SI l'oiseau se trouve entre le point Y en haut ET le point Y en bas ET la position X du tuyau se trouve entre l'avant ET l'arrière de l'oiseau
+        > game_over()
+        """
 
 
     def draw(self):
@@ -88,7 +106,7 @@ class Game:
         pyxel.blt(self.pipetop, self.o, 1, 0, 0, 32, 71) #tuyau bas
 
     def draw_player(self) :
-        pyxel.blt(20, self.pipebot, 0, 0, 0, 18, 12) # Joueur
+        pyxel.blt(30, self.player, 0, 0, 0, 18, 12) # Joueur
 
     def draw_score(self):
         pyxel.text(5, 5, "Score:", 2)
