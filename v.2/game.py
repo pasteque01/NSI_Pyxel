@@ -4,22 +4,27 @@ from random import randint
 
 from menu import MainMenu # importe la class MainMenu du script menu.py
 
+from game_over import GameOver
+
 class Game:
     # ETAT DU JEU
     # 0 = le jeu est dans le menu, 1 = le jeu est dans la map
     STATE_MAIN_MENU = 0
     STATE_MAP = 1
+    STATE_GAMEOVER = 2
 
     def __init__(self):
         # Dès l'execution du jeu, l'etat du jeu est dans le menu
         self.state = self.STATE_MAIN_MENU
         self.main_menu = MainMenu(self) #fait reference a la class MainMenu dans menu.py
+        self.game_over = GameOver(self)
         self.score = 0 #score par defaut
         self.highscore = 0
         self.pipes = {}
 
     def new_game(self):
         self.main_menu = None
+        self.game_over = None
         self.state = self.STATE_MAP #lors d'une nouvelle partie, l'etat du jeu est la map
         self.death = False #joueur pas mort
         self.score = 0 # Score constant durant la partie / a redéfinir lorsqu'on recommence la partie
@@ -31,9 +36,9 @@ class Game:
         self.player = 40
         self.pipes = {"Pipe1": [self.e, self.e+71, self.pipetop, self.pipetop+32], "Pipe2": [self.e, self.e+71, self.pipetop, self.pipetop+32]}
 
-    def game_over(self): # retourne au menu
-        self.state = self.STATE_MAIN_MENU
-        self.main_menu = MainMenu(self)
+    def death_event(self): # retourne au menu
+        self.state = self.STATE_GAMEOVER
+        self.game_over = GameOver(self)
 
     def update(self):
         if self.state is self.STATE_MAP:
@@ -43,6 +48,9 @@ class Game:
             self.check_death()
         elif self.state is self.STATE_MAIN_MENU: # si l etat = menu, on utilisera alors la fonction update de la class MainMenu
             self.main_menu.update()
+        elif self.state is self.STATE_GAMEOVER:
+            self.game_over.update()
+
 
 
     def update_player(self):
@@ -67,7 +75,7 @@ class Game:
 
     def check_death(self):
         if self.player >= 108 or self.player <= 0: # si l'oiseau sort du cadre = partie finie
-            self.game_over()
+            self.death_event()
 
         # Ancien code pour les collisions
         """if self.player >= self.e and self.player <= self.e+71 and self.pipetop <= 42 and self.pipetop >= 20:
@@ -78,9 +86,14 @@ class Game:
 
         for x in self.pipes:
             if self.player >= self.pipes[x][0] and self.player <= self.pipes[x][1] and self.pipes[x][2] <= 48 and self.pipes[x][2] >= 30:
-                self.game_over()
+                self.death_event()
 
-        """ EXPLICATION:
+
+    """def update_gameover_scene(self):
+        if pyxel.btnp(pyxel.KEY_RETURN):
+            self.state = self.STATE_MAP
+
+        EXPLICATION:
         self.player = position Y de l'oiseau
         self.pipes = dictionnaire qui contient les coordonnées nécessaires pour les collisions
         > {"Tuyau": [posY du tuyau (en haut, à gauche), posY du tuyau (en bas, à gauche), posX du tuyau]}
@@ -99,6 +112,9 @@ class Game:
             self.draw_score()
         elif self.state is self.STATE_MAIN_MENU:
             self.main_menu.draw()
+        elif self.state is self.STATE_GAMEOVER:
+            self.game_over.draw()
+
 
     def draw_pipes(self):
         pyxel.cls(5)
@@ -111,9 +127,3 @@ class Game:
     def draw_score(self):
         pyxel.text(5, 5, "Score:", 2)
         pyxel.text(30, 5, str(self.score), 2) # Dessine le score
-
-    def draw_death(self):
-        pyxel.cls(0)
-        pyxel.text(60,45, "Game Over",8)
-        pyxel.text(40,60, "Press R To Play Again",8)
-        pyxel.text(42,75, "Press Q to quit game",8)
