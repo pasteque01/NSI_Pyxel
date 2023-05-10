@@ -18,6 +18,7 @@
 <ul><li id="tuyau_du_bas"><b>"Pas de mort pour le tuyau du bas"</b></li>
   <p>Pour résoudre ce problème, nous avons créer un dictionnaire avec les coordonnées de chaques tuyaux, puis en utilisant une boucle nous avons créer des collisions pour chaques tuyaux dans le dictionnaire.</p>
 </ul>
+
 # ACTUALITES DU PROJET:
 <b>07/05:</b>
 <ul><li>Modification du système de collision pour les tuyaux (+ explication dans le code)</li>
