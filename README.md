@@ -18,7 +18,7 @@
 <ul><li id="tuyau_du_bas"><b>"Pas de mort pour le tuyau du bas"</b></li>
   <p>Pour résoudre ce problème, nous avons créer un dictionnaire avec les coordonnées de chaques tuyaux, puis en utilisant une boucle nous avons créer des collisions pour chaques tuyaux dans le dictionnaire.</p>
   <li id="tuyau_bordure"><b>"Tuyau n'est pas collé à la bordure"</b></li>
-  <p>Pour résoudre ce problème</p>
+  <p>Pour résoudre ce problème, nous avons d'abord calculés la taille des tuyaux, puis nous avons espacés le tuyau du bas basé sur la localisation du tuyau du haut pour garantir un espace assez grand pour sauter, mais aussi que le tuyau du bas touche la bordure et ne flotte pas</p>
 </ul>
 
 # ACTUALITES DU PROJET:
