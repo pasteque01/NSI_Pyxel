@@ -8,12 +8,16 @@
 <li>Après une mort, le joueur retourne au menu de démarrage où le dernier score et le meilleur score se mettent à jour</li></ul>
 <b><i>Difficultés:</i></b>
 <ul>
-<li><s>Pas de mort pour le tuyau du bas</s> (réparé le 07/05)</li>
+  <li><s>Pas de mort pour le tuyau du bas</s> <a href="#tuyau_du_bas">(réparé le 07/05)</a></li>
 <li>Score qui se met mal a jour a partir de 10</li>
 <li><s>Tuyau n'est pas collé à la bordure</s> (réparé le 06/05)</li>
 <li>Tuyau n'arrive pas à la fin de la fenêtre</li>
+<li>L'oiseau passe à travers une partie du tuyau</li>
 </ul>
-
+<b><i>Comment nous avons réparés les bugs:</i></b>
+<ul><li id="tuyau_du_bas">"Pas de mort"</li>
+  <p>Pour résoudre ce problème, nous avons slay</p>
+</ul>
 # ACTUALITES DU PROJET:
 <b>07/05:</b>
 <ul><li>Modification du système de collision pour les tuyaux (+ explication dans le code)</li>
