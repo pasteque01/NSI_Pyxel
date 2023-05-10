@@ -23,7 +23,7 @@ class Game:
 
         self.upperpipeY = 0
         self.height = 100
-        self.width = 32
+        self.width = 23
 
     def new_game(self):
         self.main_menu = None
@@ -102,11 +102,14 @@ class Game:
 
     def draw_pipes(self):
         pyxel.cls(5)
+        #pyxel.rect(self.pipesX, self.b, self.width, 72, 7)
+        #pyxel.rect(self.pipesX, self.height, self.width, 72, 7)
         pyxel.blt(self.pipesX, self.b, 2, 0, 0, self.width, 72) #tuyau haut
         pyxel.blt(self.pipesX, self.height, 1, 0, 0, self.width, 72) #tuyau bas
 
     def draw_player(self) :
-        pyxel.rect(self.playerX, self.playerY, 15, 15, 7) # Joueur
+        #pyxel.rect(self.playerX, self.playerY, 15, 15, 7) # Joueur
+        pyxel.blt(self.playerX, self.playerY, 0, 0, 0, 18, 12) # Joueur
 
     def draw_score(self):
         pyxel.text(5, 5, "Score:", 2)
