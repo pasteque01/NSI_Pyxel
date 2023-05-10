@@ -10,13 +10,15 @@
 <ul>
   <li><s>Pas de mort pour le tuyau du bas</s> <a href="#tuyau_du_bas">(réparé le 07/05)</a></li>
 <li>Score qui se met mal a jour a partir de 10</li>
-<li><s>Tuyau n'est pas collé à la bordure</s> (réparé le 06/05)</li>
+  <li><s>Tuyau n'est pas collé à la bordure</s> <a href="#tuyau_bordure">(réparé le 06/05)</a></li>
 <li>Tuyau n'arrive pas à la fin de la fenêtre</li>
 <li>L'oiseau passe à travers une partie du tuyau</li>
 </ul>
 <b><i>Comment nous avons réparés les bugs:</i></b>
 <ul><li id="tuyau_du_bas"><b>"Pas de mort pour le tuyau du bas"</b></li>
   <p>Pour résoudre ce problème, nous avons créer un dictionnaire avec les coordonnées de chaques tuyaux, puis en utilisant une boucle nous avons créer des collisions pour chaques tuyaux dans le dictionnaire.</p>
+  <li id="tuyau_bordure"><b>"Tuyau n'est pas collé à la bordure"</b></li>
+  <p>Pour résoudre ce problème</p>
 </ul>
 
 # ACTUALITES DU PROJET:
