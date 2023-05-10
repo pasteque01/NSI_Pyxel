@@ -15,8 +15,8 @@
 <li>L'oiseau passe à travers une partie du tuyau</li>
 </ul>
 <b><i>Comment nous avons réparés les bugs:</i></b>
-<ul><li id="tuyau_du_bas"><i><u>"Pas de mort"</u></i></li>
-  <p>Pour résoudre ce problème, nous avons </p>
+<ul><li id="tuyau_du_bas"><i><u>"Pas de mort pour le tuyau du bas"</u></i></li>
+  <p>Pour résoudre ce problème, nous avons créer un dictionnaire avec les coordonnées de chaques tuyaux, puis en utilisant une boucle nous avons créer des collisions pour chaques tuyaux dans le dictionnaire.</p>
 </ul>
 # ACTUALITES DU PROJET:
 <b>07/05:</b>
