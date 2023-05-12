@@ -39,6 +39,9 @@ class Game:
         self.b = randint(-60, -10) #tuyau aleatoire
         self.height = self.b +110 #tuyau aleatoire
         self.pipesX = 100 #position du tuyau du haut
+        self.c = randint(-60, -10) #tuyau aleatoire
+        self.height1 = self.c +110 #tuyau aleatoire
+        self.pipesX1 = 150 #position du tuyau du haut
         self.dico = {}
 
 
@@ -68,13 +71,16 @@ class Game:
 
     def update_pipes(self):
         self.pipesX = (self.pipesX - self.vitesse) % pyxel.width
+        self.pipesX1 = (self.pipesX1 - self.vitesse) % pyxel.width
         self.playerY = (self.playerY + 1.5 ) % pyxel.height
-        self.dico = {"pipehaut" : [self.pipesX,self.b,2], "pipebas" : [self.pipesX,self.height,1]}
+        self.dico = {"pipehaut" : [self.pipesX,self.b,2], "pipebas" : [self.pipesX,self.height,1], "pipehaut1" : [self.pipesX1,self.c,2], "pipebas1" : [self.pipesX1,self.height1,1]}
 
     def update_score(self):
         if self.pipesX == 0: # Lorsqu'un tuyau passe à x=0:
             self.b = randint(-60, -15)
             self.height = self.b +110
+            self.c = randint(-60, -10) #tuyau aleatoire
+            self.height1 = self.c +110 #tuyau aleatoire
             self.score += 1
             self.scorespeed += 1
         if self.scorespeed == 5: # Tous les 5 tuyaux:
