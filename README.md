@@ -1,4 +1,4 @@
-# PROJET: JEU PYXEL
+# PROJET: JEU PYXEL (v.3)
 <b><i>Etat actuel du projet:</i></b>
 <ul><li>Joueur (oiseau) qui saute a travers des tuyaux avec la barre ESPACE</li>
 <li>La taille des tuyaux varient a chaque rotation</li>
