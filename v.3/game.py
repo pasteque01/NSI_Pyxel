@@ -8,7 +8,7 @@ from game_over import GameOver
 
 class Game:
     # ETAT DU JEU
-    # 0 = le jeu est dans le menu, 1 = le jeu est dans la map
+    # 0 = le jeu est dans le menu, 1 = le jeu est dans la map, 2 = le jeu est sur l'écran de mort
     STATE_MAIN_MENU = 0
     STATE_MAP = 1
     STATE_GAMEOVER = 2
@@ -22,7 +22,6 @@ class Game:
         self.highscore = 0
 
         self.upperpipeY = 0
-        self.height = 100
         self.width = 23
 
     def new_game(self):
@@ -34,10 +33,14 @@ class Game:
         self.scorespeed = 0 # Score allant jusqu'à 5 pour l'accélérateur
         self.vitesse = 2 # vitesse des tuyaux au debut
 
+        self.pipesX = {"X1": {"x": 100, "B": randint(-60, -10)},
+        "X2": {"x": 180, "B": randint(-60, -10)}}
 
-        self.b = randint(-60, -10) #tuyau aleatoire
-        self.height = self.b +110 #tuyau aleatoire
-        self.pipesX = 100 #position du tuyau du haut
+        for x in self.pipesX:
+            self.pipesX[x]["Height"] = self.pipesX[x]["B"] + 110
+
+
+
 
 
         self.playerY = 40
@@ -65,28 +68,38 @@ class Game:
             self.playerY = (self.playerY - 10) # lorsque l'oiseau tombe et qu'on appuie sur espace il va remonter de 10 pixels
 
     def update_pipes(self):
-        self.pipesX = (self.pipesX - self.vitesse) % pyxel.width
+        for x in self.pipesX:
+            self.pipesX[x]["x"] = (self.pipesX[x]["x"] - self.vitesse) % pyxel.width
         self.playerY = (self.playerY + 1.5 ) % pyxel.height
 
     def update_score(self):
-        if self.pipesX == 0: # Lorsqu'un tuyau passe à x=0:
-            self.b = randint(-60, -15)
-            self.height = self.b +110
+        for y in self.pipesX:
+            if self.pipesX[y]["x"] == 0:
+                self.pipesX[y]["B"] = randint(-60, -15)
+                self.pipesX[y]["Height"] = self.pipesX[y]["B"] +110
+                self.score += 1
+        """for x in self.pipesX:
+            if self.pipesX[x] == 0:
+                self.pipesX["X1"]["B"] = randint(-60, -15)
+                self.pipesX["X1"]["Height"] = self.pipesX["X1"]["B"] +110
+                self.score += 1
+                self.scorespeed += 0.5
+        if self.pipesX["X1"]["x"] == 0: # Lorsqu'un tuyau passe à x=0:
+            self.pipesX["X1"]["B"] = randint(-60, -15)
+            self.pipesX["X1"]["Height"] = self.pipesX["X1"]["B"] +110
             self.score += 1
-            self.scorespeed += 1
-        if self.scorespeed == 5: # Tous les 5 tuyaux:
-            self.scorespeed = 0
-            self.vitesse += 0.5
+            self.scorespeed += 1"""
 
     def collision(self):
         if self.playerY <= 0 or self.playerY >= 120:
             self.death_event()
         else:
-            if abs(self.playerX - self.pipesX) <= self.width:
-                if self.playerY <= self.b + 70:
-                    self.death_event()
-                elif self.playerY + 13 >= self.height: #15 symbolise la hauteur du joueur
-                    self.death_event()
+            for x in self.pipesX:
+                if abs(self.playerX - self.pipesX[x]["x"]) <= self.width:
+                    if self.playerY <= self.pipesX[x]["B"] + 70:
+                        self.death_event()
+                    elif self.playerY + 12 >= self.pipesX[x]["Height"]: #15 symbolise la hauteur du joueur
+                        self.death_event()
 
 
     def draw(self):
@@ -102,10 +115,11 @@ class Game:
 
     def draw_pipes(self):
         pyxel.cls(5)
-        #pyxel.rect(self.pipesX, self.b, self.width, 72, 7)
-        #pyxel.rect(self.pipesX, self.height, self.width, 72, 7)
-        pyxel.blt(self.pipesX, self.b, 2, 0, 0, self.width, 72) #tuyau haut
-        pyxel.blt(self.pipesX, self.height, 1, 0, 0, self.width, 72) #tuyau bas
+        #pyxel.rect(self.pipesX["X1"]["x"], self.pipesX["X1"]["B"], self.width, 72, 7)
+        #pyxel.rect(self.pipesX["X1"]["x"], self.pipesX["X1"]["Height"], self.width, 72, 7)
+        for z in self.pipesX:
+            pyxel.blt(self.pipesX[z]["x"], self.pipesX[z]["B"], 2, 0, 0, self.width, 72) #tuyau haut
+            pyxel.blt(self.pipesX[z]["x"], self.pipesX[z]["Height"], 1, 0, 0, self.width, 72) #tuyau bas
 
     def draw_player(self) :
         #pyxel.rect(self.playerX, self.playerY, 15, 15, 7) # Joueur
